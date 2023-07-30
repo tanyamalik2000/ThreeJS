@@ -2,10 +2,10 @@
 import * as THREE from 'three'
 
 //creates new scene and sets up camara for animation - each animation must require these for setup
-const backgroundMusic = document.getElementById('backgroundMusic');
+const music = document.getElementById('music');
 
 // Start loading the audio file
-backgroundMusic.load();
+music.load();
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -34,8 +34,8 @@ camera.position.z = 5;
 //animates torus by moving x and y positions
 function animate() {
 	requestAnimationFrame(animate);
-    backgroundMusic.addEventListener('canplaythrough', function() {
-        backgroundMusic.play();
+    music.addEventListener('canplaythrough', function() {
+        music.play();
       });
     torus.rotation.x += 0.01;
     torus.rotation.y += 0.01;
