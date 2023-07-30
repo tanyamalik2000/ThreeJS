@@ -12,7 +12,7 @@ renderer.setClearColor (0xddddff, 1);
 document.body.appendChild( renderer.domElement );
 
 //creates shape (torus in this case) and material (texture) and adds to scene - add defaults for no parameters or add parameters manually
-//light shows shades of 
+//light shows shades of rotating shape
 const geometry = new THREE.TorusGeometry();
 const material = new THREE.MeshStandardMaterial( { color: 0x00ff00 } );
 const light = new THREE.DirectionalLight(0xffffff);
