@@ -2,6 +2,11 @@
 import * as THREE from 'three'
 
 //creates new scene and sets up camara for animation - each animation must require these for setup
+const backgroundMusic = document.getElementById('backgroundMusic');
+
+// Start loading the audio file
+backgroundMusic.load();
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -10,6 +15,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setClearColor (0xddddff, 1);
 document.body.appendChild( renderer.domElement );
+
 
 //creates shape (torus in this case) and material (texture) and adds to scene - add defaults for no parameters or add parameters manually
 //light shows shades of rotating shape
@@ -27,7 +33,10 @@ camera.position.z = 5;
 
 //animates torus by moving x and y positions
 function animate() {
-	requestAnimationFrame( animate );
+	requestAnimationFrame(animate);
+    backgroundMusic.addEventListener('canplaythrough', function() {
+        backgroundMusic.play();
+      });
     torus.rotation.x += 0.01;
     torus.rotation.y += 0.01;
 	renderer.render(scene, camera);
