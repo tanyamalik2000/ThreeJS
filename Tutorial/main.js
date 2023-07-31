@@ -4,8 +4,7 @@ import * as THREE from 'three'
 //creates new scene and sets up camara for animation - each animation must require these for setup
 const music = document.getElementById('music');
 var request;
-
-
+let animateMe = true;
 
 // Start loading the audio file
 music.load();
@@ -18,7 +17,9 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 renderer.setClearColor (0xddddff, 1);
 document.body.appendChild( renderer.domElement );
-document.getElementById('pause').addEventListener('click',stopAnimate);
+
+
+
 
 //creates shape (torus in this case) and material (texture) and adds to scene - add defaults for no parameters or add parameters manually
 //light shows shades of rotating shape
@@ -37,9 +38,11 @@ camera.position.z = 5;
 //animates torus by moving x and y positions
 function animate() {
 	request = requestAnimationFrame(animate);
-    music.play();
-    torus.rotation.x += 0.01;
-    torus.rotation.y += 0.01;
+  music.play();
+  document.getElementById("pressMe").textContent="Pause"; 
+  document.getElementById('pressMe').addEventListener('click',stopAnimate);
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.01;
 	renderer.render(scene, camera);
 }
 
@@ -47,6 +50,9 @@ function stopAnimate()
 {
   cancelAnimationFrame(request);
   music.pause();
+  document.getElementById("pressMe").textContent="Play"; 
+  document.getElementById('pressMe').addEventListener('click',animate);
+  renderer.render(scene, camera);
 }
 
 //runs animate function
