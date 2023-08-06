@@ -7,7 +7,7 @@
 			body { 
 			margin: 0; 
 			}
-			#pressMe {
+			#pause {
 	  		position: absolute;
 			border-radius: 0;
 			background-color: blue;
@@ -16,7 +16,18 @@
 			height: 10%;
 			font-size: large;
 			top:80%;
-			right:45%;
+			left:38%;
+			}
+			#play {
+	  		position: absolute;
+			border-radius: 0;
+			background-color: blue;
+			color: white;
+			width: 10%;
+			height: 10%;
+			font-size: large;
+			top:80%;
+			right:38%;
 			}
 		</style>
 	</head>
@@ -25,7 +36,8 @@
 		<audio id="music" loop>
 			<source src="Vivaldi L'estro armonico Op.3 Concerto No.10 in B minor.mp3" type="audio/mpeg">
 		  </audio>
-		  <button id="pressMe">Pause</button>
+		  <button id="pause">Pause</button>
+		  <button id="play">Play</button>
 	</body>
 	  
 </html>

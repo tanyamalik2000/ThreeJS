@@ -4,7 +4,7 @@ import * as THREE from 'three'
 //creates new scene and sets up camara for animation - each animation must require these for setup
 const music = document.getElementById('music');
 var request;
-let animateMe = true;
+var animateMe = false;
 
 // Start loading the audio file
 music.load();
@@ -34,13 +34,12 @@ scene.add(torus);
 
 //sets camara position to determine distance
 camera.position.z = 5;
-
+document.getElementById('pause').addEventListener('click',stopAnimate);
+document.getElementById('play').addEventListener('click',animate);
 //animates torus by moving x and y positions
 function animate() {
 	request = requestAnimationFrame(animate);
   music.play();
-  document.getElementById("pressMe").textContent="Pause"; 
-  document.getElementById('pressMe').addEventListener('click',stopAnimate);
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.01;
 	renderer.render(scene, camera);
@@ -50,10 +49,7 @@ function stopAnimate()
 {
   cancelAnimationFrame(request);
   music.pause();
-  document.getElementById("pressMe").textContent="Play"; 
-  document.getElementById('pressMe').addEventListener('click',animate);
   renderer.render(scene, camera);
 }
-
 //runs animate function
 animate();
